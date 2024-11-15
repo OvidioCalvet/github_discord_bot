@@ -1,14 +1,13 @@
 import creds
 import discord
+from discord import Color
 from discord.ext import commands
 
-intents = discord.Intents.default()
-intents.message_content = True
-
-bot = discord.ext.commands.Bot(command_prefix='$',intents=intents)
+bot = commands.Bot(command_prefix="$", intents=discord.Intents.all())
 
 @bot.event
 async def welcome():
-    print('Github Bot has landed!!!')
+    channel = bot.get_channel(creds.WELCOME_CHANNEL_ID)
+    await channel.send("test test test")
 
 bot.run(creds.BOT_TOKEN)
